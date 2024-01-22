@@ -8,7 +8,7 @@ interface ShoppingListItem {
 }
 
 //define a type for shopping list state
-interface ShoppingListState {
+export interface ShoppingListState {
     value: Array<ShoppingListItem>
 }
 
