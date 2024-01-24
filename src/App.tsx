@@ -5,7 +5,7 @@ import Col from 'react-bootstrap/Col';
 import ControlPanel from './components/Panel';
 import Scanner from './components/Scan';
 import GroceryList from './components/GroceryList'
-
+import Balance from './components/Balance'
 import './App.css';
 
 function App() {
@@ -18,6 +18,7 @@ function App() {
         <Row className="h-100">
           <Col xs={8} data-testid="grocery-list" className='bg-warning'>Grocery List
             <GroceryList />
+            <Balance />
           </Col>
           <ControlPanel />
         </Row>
