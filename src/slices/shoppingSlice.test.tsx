@@ -1,10 +1,15 @@
-import shoppingListReducer, { increment, ShoppingListState } from './shoppingSlice'
+import shoppingListReducer,
+{
+  increment,
+  remove,
+  ShoppingListState 
+} from './shoppingSlice'
 
 describe('shoppingList reducer', () => {
   const initialState: ShoppingListState = {
     value: [
       {
-        Index: 1,
+        Index: 0,
         Name: "Pineapple",
         Quantity: 5
       }
@@ -15,7 +20,7 @@ describe('shoppingList reducer', () => {
     expect(shoppingListReducer(undefined, { type: 'known' })).toEqual({
       value: [
         {
-          Index: 1,
+          Index: 0,
           Name: "Pineapple",
           Quantity: 5
         }
@@ -24,11 +29,16 @@ describe('shoppingList reducer', () => {
   })
 
   it('should handle increment', () => {
-    const newItem = { Index: 3, Name: 'Beef Steak', Quantity: 3};
+    const newItem = { Index: 1, Name: 'Beef Steak', Quantity: 3 };
     const actual = shoppingListReducer(initialState, increment(newItem));
     expect(actual.value).toEqual([
       ...initialState.value,
       newItem
     ])
+  })
+
+  it('should handle remove last item', () => {
+    const actual = shoppingListReducer(initialState, remove(0))
+    expect(actual.value).toEqual([])
   })
 })

@@ -15,7 +15,7 @@ export interface ShoppingListState {
 const initialState: ShoppingListState = {
     value: [
         {
-            "Index": 1,
+            "Index": 0,
             "Name": "Pineapple",
             "Quantity": 5
         }
@@ -27,15 +27,18 @@ export const shoppingListSlice = createSlice({
     initialState,
     reducers: {
         increment: (state, action: PayloadAction<ShoppingListItem>) => {
-            state.value = [
-                ...state.value,
-                action.payload
-            ]
+            state.value.push(action.payload)
+        },
+        remove: (state, action: PayloadAction<Number>) => {
+            return {
+                ...state,
+                value: state.value.filter(shoppingItem => shoppingItem.Index !== action.payload)
+            }
         }
     }
 })
 
-export const { increment } = shoppingListSlice.actions;
+export const { increment, remove } = shoppingListSlice.actions;
 
 export const selectShoppingList = (state: RootState) => state.shoppingList.value
 

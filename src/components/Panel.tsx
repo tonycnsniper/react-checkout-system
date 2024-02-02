@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Col from 'react-bootstrap/Col'
 import Button from 'react-bootstrap/Button'
 import Modal from 'react-bootstrap/Modal'
+import Void from './Void'
 
 function ControlPanel() {
     const [show, setShow] = useState(false);
@@ -13,6 +14,7 @@ function ControlPanel() {
           <Col xs={4} data-testid="control-panel" className='bg-primary'>
             <h4>Control Panel</h4>
             <Button data-testid="checkout-login" variant="secondary" onClick={hanldeShow}>Login</Button>
+            <Void />
             <Modal data-testid="login-modal" show={show} onHide={handleClose}>
               <Modal.Header closeButton>
               </Modal.Header>
