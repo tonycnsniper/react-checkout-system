@@ -7,11 +7,14 @@ import { remove } from '../slices/shoppingSlice'
 
 function Void() {
   const dispatch = useAppDispatch();
-  const lastItem = useAppSelector((state) =>
-    state.shoppingList.value[state.shoppingList.value.length - 1]);
+  const currentShoppingList = useAppSelector((state) =>
+    state.shoppingList.value);
+
+  const lastItem = currentShoppingList[currentShoppingList.length - 1];
+  const isEmptyList = !currentShoppingList.length;
     
   return (
-    <Button onClick={() => dispatch(remove(lastItem.Index))}>
+    <Button onClick={() => dispatch(remove(lastItem.Index))} disabled={isEmptyList}>
       Void
     </Button>
   )
