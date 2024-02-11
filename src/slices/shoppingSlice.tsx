@@ -32,7 +32,7 @@ export const shoppingListSlice = createSlice({
         remove: (state, action: PayloadAction<Number>) => {
             return {
                 ...state,
-                value: state.value.filter(shoppingItem => shoppingItem.Index !== action.payload)
+                value: state.value.filter((shoppingItem, index) => index !== action.payload)
             }
         }
     }

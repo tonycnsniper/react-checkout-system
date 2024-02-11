@@ -10,11 +10,11 @@ function Void() {
   const currentShoppingList = useAppSelector((state) =>
     state.shoppingList.value);
 
-  const lastItem = currentShoppingList[currentShoppingList.length - 1];
-  const isEmptyList = !currentShoppingList.length;
+  const lastItemIndex = currentShoppingList.length - 1;
+  const isEmptyList = currentShoppingList.length === 0;
     
   return (
-    <Button onClick={() => dispatch(remove(lastItem.Index))} disabled={isEmptyList}>
+    <Button onClick={() => dispatch(remove(lastItemIndex))} disabled={isEmptyList}>
       Void
     </Button>
   )

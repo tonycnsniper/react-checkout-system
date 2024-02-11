@@ -12,6 +12,16 @@ describe('shoppingList reducer', () => {
         Index: 0,
         Name: "Pineapple",
         Quantity: 5
+      },
+      {
+        Index: 0,
+        Name: "Apple",
+        Quantity: 10
+      },
+      {
+        Index: 0,
+        Name: "Pear",
+        Quantity: 15
       }
     ]
   }
@@ -38,7 +48,13 @@ describe('shoppingList reducer', () => {
   })
 
   it('should handle remove last item', () => {
-    const actual = shoppingListReducer(initialState, remove(0))
-    expect(actual.value).toEqual([])
+    const actual = shoppingListReducer(initialState, remove(2));
+    expect(actual.value.length).toEqual(2);
+    expect(actual.value[1]).toEqual(
+    {
+      Index: 0,
+      Name: "Apple",
+      Quantity: 10
+    })
   })
 })
